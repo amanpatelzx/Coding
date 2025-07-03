@@ -1,0 +1,1 @@
+Enter Number to get its all the factor
