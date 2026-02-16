@@ -1,29 +1,18 @@
-#include<iostream>
-#include<vector>
+#include <bits/stdc++.h>
 using namespace std;
 int main(){
-    vector<int> ans;
     int t;
     cin>>t;
-    for( int i =0; i<t; i++){
-        int p;
-        int count = 0;
-        int n,m,x,y;
-        cin>>n>>m>>x>>y;
-        for (int j=0; j <n;j++) {
-            int p;
-            cin >> p;
-            count++;
+    while(t--){
+        int n;
+        cin>>n;
+        bool last = false;
+        for(int j = 0 ; j < n; j++){
+            int temp;
+            cin>>temp;
+            if(temp == 67) last = true;
         }
-        for (int k=0; k <m;k++) {
-            int p;
-            cin >> p;
-            count++;
-        }
-        int q;
-        ans.push_back(count);
-    }
-    for(int i=0; i<ans.size();i++){
-        cout<<ans[i]<<"\n";
+        if(last) cout<<"YES\n";
+        else cout<<"NO\n";
     }
 }
