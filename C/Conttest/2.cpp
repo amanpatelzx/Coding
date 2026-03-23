@@ -2,7 +2,10 @@
 using namespace std;
     
 int main(){
-    long long a = INT_MAX;
-    int b = (a << 1);
-    cout<<b;
+    unordered_map<int,int> mp;
+    mp[1] = 4;
+    for(auto ele : mp){
+        cout<<ele.first;
+        cout<<ele.second;
+    }
 }

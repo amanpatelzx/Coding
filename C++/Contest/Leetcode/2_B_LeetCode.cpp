@@ -1,30 +1,76 @@
 #include <bits/stdc++.h>
 using namespace std;
-string f(string &s, int k){
-        int i = 0;
-        while(i < s.size()){
-            bool check = false;
-            for(int j = i+1; j < s.size() &&  j <= i+k; j++){
-                if(s[i] == s[j]){
-                    s.erase(j, 1);
-                    check = true;
-                    return s;
+typedef long long int ll;
+int longestArithmetic(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> arr(n-1);
+        for(int i = 0; i < n-1; i++){
+            arr[i] = nums[i+1] - nums[i];
+        }
+        int count = 1;
+        int idx = 0;
+        int maxCount = 1;
+        for(int i = 1; i < n-1; i++){
+            if(arr[i] == arr[i-1]){
+                count++;
+                if(maxCount < count){
+                    idx = i;
+                    maxCount = max(maxCount, count);
                 }
             }
-            if(!check) i++;
+            else{
+                count = 1;
+            }
         }
-        return s;
-    }
-    string mergeCharacters(string s, int k) {
-        int temp = -1;
-        while(temp != s.size()){
-            temp = s.size();
-            s = f(s , k);
+        int result = 1;
+        int i = idx-1;
+        int leftCount = 0;
+        int leftIdx = -1;
+        while(i >= 0){
+            if(arr[i] == arr[i+1]){
+                leftCount++;
+                leftIdx = i;
+                i--;
+            }
+            else break;
         }
-        return s;
+        int result1 = leftCount;
+        bool check = true;
+        i = leftIdx-1;
+        while(i >= 0){
+            if(check){
+                result1++;
+                check = false;
+                arr[i] = arr[i+1];
+                i--;
+            }
+            else {
+                if(arr[i] == arr[i+1]){
+                    result1++;
+                    i--;
+                }
+            }
+        }
+        int result2 = leftCount;
+        check = true;
+        i = idx+1;
+        while(i < n-1){
+            if(check){
+                result2++;
+                check = false;
+                arr[i] = arr[i-1];
+                i++;
+            }
+            else {
+                if(arr[i] == arr[i-1]){
+                    result2++;
+                    i++;
+                }
+            }
+        }
+        return max(result1, result2);
     }
 int main() {
-    string s = "oqommmropo";
-    int k = 4;
-    cout<<mergeCharacters(s , k);
+    vector<int> nums = {2,8,2,2,5};
+    cout<<longestArithmetic(nums);
 }

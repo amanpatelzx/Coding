@@ -1,64 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
- vector<int> makeParityAlternating(vector<int>& nums) {
-        int minVal = INT_MAX;
-        int maxVal = INT_MIN;
-        int count  = 0;
-        int n = nums.size();
-        for(int i = 0;i < n-1; i = i+2){
-            if(i+1 == n){
-                minVal = min(minVal , nums[i]);
-                maxVal = max(maxVal , nums[i]);
-            }
-            if((nums[i]%2 == 0 && nums[i+1] % 2== 1) || (nums[i]%2 == 1 && nums[i+1] % 2== 0)){
-                minVal = min({minVal , nums[i] , nums[i+1]});
-                maxVal = max({maxVal , nums[i] , nums[i+1]});
-            }
-            else {
-                if(i == 0){
-                    if(nums[i]%2 == 0) nums[i]++;
-                    else{
-                        if(nums[i] > 0)nums[i]++;
-                        else nums[i]--;
+ int longestArithmetic(vector<int>& nums) {
+        int ans = 0;
+        int temp;
+        int idx;
+        unordered_map<int , pair<int,int>> mp;
+        for(int i = 0; i < nums.size(); i++){
+            bool check = true;
+            int count = 0;
+            int start = i;
+            int end = i;
+            int diff = -1;
+            for(int j = i+1; j < nums.size(); j++){
+                if(check){
+                   if(diff == -1){
+                       diff = nums[j] - nums[j-1];
+                       count++;
+                       end = j;
+                   }
+                    else {
+                        if(nums[j] - nums[j-1] != diff){
+                            temp = nums[j];
+                            idx = j;
+                            nums[j] = diff + nums[j-1];
+                            check = false;
+                            count++;
+                            end = j;
+                        }
                     }
-                    count++;
-                    minVal = min({minVal , nums[i] , nums[i+1]});
-                    maxVal = max({maxVal , nums[i] , nums[i+1]});
                 }
-                else {
-                    if(nums[i-1]%2 == 0){
-                        if(nums[i] %2 == 0) {
-                            if(nums[i] > 0)nums[i]++;
-                            else nums[i]--;
-                        }
-                        else {
-                            if(nums[i+1] > 0)nums[i+1]++;
-                            else nums[i+1]--;
-                        }
-                        minVal = min({minVal , nums[i] , nums[i+1]});
-                        maxVal = max({maxVal , nums[i] , nums[i+1]});
+                else{
+                    if(nums[j] - nums[j-1] == diff){
                         count++;
+                        end = j;
+    
                     }
                     else {
-                        if(nums[i] %2 == 0) {
-                            if(nums[i+1] > 0)nums[i+1]++;
-                            else nums[i+1]--;
-                        }
-                        else {
-                            if(nums[i] > 0) nums[i]++;
-                            else nums[i]--;
-                        }
-                        minVal = min({minVal , nums[i] , nums[i+1]});
-                        maxVal = max({maxVal , nums[i] , nums[i+1]});
-                        count++;
+                        break;
                     }
                 }
+                nums[idx] = temp;
+                if(mp.count(diff)){
+                    int tempStart = mp[diff].first;
+                    int tempEnd = mp[diff].second;
+                    if( j >= tempStart && j < tempEnd) break;
+                }
             }
+            mp[diff] = {start , end};
+            ans = max(ans , count);
         }
-        return {count, maxVal ,minVal};
+        return ans;
     }
 int main() {
-    vector<int> nums = {-2,-3,1,4};
-    vector<int> v = makeParityAlternating(nums);
-    cout<<v[0]<<" "<<v[1]; 
+    vector<int> nums = {9,7,5,10,1 , -1};
+    // vector<int> nums = {1,2,6,4};
+    cout<<longestArithmetic(nums);
 }

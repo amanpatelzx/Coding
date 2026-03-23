@@ -1,22 +1,6 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef vector<int> vi;
-typedef pair<int,int> pi;
-
-#define F first
-#define S second
-#define PB push_back
-#define MP make_pair
-
-#define REP(i,a,b) for (int i = a; i <= b; i++)
-bool is_prime(int n){
-    if(n==1) return false;
-    for(int i=2;i<=sqrt(n);i++){
-        if(n%i==0) return false;
-    }
-    return true;
-}
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
@@ -24,24 +8,25 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-        int n;
+        ll n;
         cin>>n;
-        unordered_set<int> s;
-        for(int i  =1; i <= sqrt(n); i++){
-            if(n % i == 0){
-                if(is_prime(i)) s.insert(i);
-                if(is_prime(n/i)) s.insert(n/i);
+        vector<ll> v(n);
+        for(ll i = 0; i < n; i++){
+            cin>>v[i];
+        }
+        vector<ll> ans(n);
+        for(int i = 0; i < n; i++){
+            int m = 0, s = 0;
+            for(int j = i+1; j < n; j++){
+                if(v[j] > v[i]) m++;
+                if(v[j] < v[i]) s++;
             }
+            ans[i] = max(m ,s);
         }
-        ll ans = 1;
-        for(auto &it : s){
-            ans *= (ll)(it);
+        for(int i = 0; i < n; i++){
+            cout<<ans[i]<<" ";
         }
-        // for(auto &it : s){
-        //     cout<<it<<" ";
-        // }
-        // cout<<endl;
-        cout<<ans<<"\n";
+        cout<<"\n";
     }
 
 }

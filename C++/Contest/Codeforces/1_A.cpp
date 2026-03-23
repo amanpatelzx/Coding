@@ -19,35 +19,27 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-        int n;
-        cin>>n;
+        ll n ,c, k;
+        cin>>n>>c>>k;
         vector<int> v(n);
         for(int i = 0; i < n; i++){
             cin>>v[i];
         }
-        vector<int> temp = v;
-        sort(v.rbegin() ,v.rend());
-        int val = INT_MIN;
-        int idx = -1;
-        for(int i = 0; i < v.size(); i++){
-            if(v[i] != temp[i]){
-                val = v[i];
-                idx = i;
-                break;
-            }
-        }
-        int tempIdx;
+        sort(v.begin(), v.end());
         for(int i = 0; i < n; i++){
-            if(temp[i] == val){
-                tempIdx = i;
-                break;
+            if(v[i] <= c){
+                ll t = c - v[i];
+                if(k > t){
+                    k -= t;
+                    c += c;
+                }
+                else{
+                    c += v[i] + k;
+                    k = 0;
+                }
             }
         }
-        if(idx != -1) reverse(temp.begin() + idx, temp.begin()+tempIdx+1);
-        for(auto &ele : temp){
-            cout<<ele<<" ";
-        }
-        cout<<"\n";
+        cout<<c<<"\n";
     }
 
 }
