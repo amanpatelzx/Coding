@@ -1,20 +1,26 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
-int main(){
-    int n;
-    cin>>n;
-    for(int i = 0; i < n/2; i++){
-        for(int j = 0; j <= n; j++){
-            if(j == n/2 - i || j == n/2 + i) cout<<"* ";
-            else cout<<"  ";
-        }
-        cout<<"\n";
-    }
-    for(int i = n/2; i >= 0; i--){
-        for(int j = 0; j <= n; j++){
-            if(j == n/2 - i || j == n/2 + i) cout<<"* ";
-            else cout<<"  ";
-        }
-        cout<<"\n";
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int,int> pi;
+
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+
+#define REP(i,a,b) for (int i = a; i <= b; i++)
+
+void solve(){
+    cout<<floor(9.3);
+}
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
+    cin>>t;
+    while(t--){
+        solve();
     }
 }
+

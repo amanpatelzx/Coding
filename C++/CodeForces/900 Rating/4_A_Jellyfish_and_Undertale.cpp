@@ -3,30 +3,24 @@ using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
-
+ 
 #define F first
 #define S second
 #define PB push_back
 #define MP make_pair
-
-#define REP(i,a,b) for (int i = a; i <= b; i++)
-
+ 
+ 
 void solve(){
-    int n;
-    cin>>n;
-    int k;
-    cin>>k;
-    int sum = 0;
+    ll a, b,n;
+    cin>>a>>b>>n;
+    vector<ll> v(n);
+    for(int i  =0; i < n; i++) cin>>v[i];
+ 
+    ll sum = b;
     for(int i = 0; i < n; i++){
-        int x;
-        cin>>x;
-        sum += x;
+        sum += min(v[i], a-1);
     }
-    if(sum % 2 == 1) cout<<"YES\n";
-    else{
-        if(n*k % 2 == 0) cout<<"YES\n";
-        else cout<<"NO\n";
-    }
+    cout<<sum <<"\n";
 }
 int main() {
     ios::sync_with_stdio(0);

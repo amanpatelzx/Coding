@@ -9,24 +9,24 @@ typedef pair<int,int> pi;
 #define PB push_back
 #define MP make_pair
 
-#define REP(i,a,b) for (int i = a; i <= b; i++)
 
 void solve(){
     int n;
     cin>>n;
-    int k;
-    cin>>k;
-    int sum = 0;
-    for(int i = 0; i < n; i++){
+    int ans = 0;
+    int count = 0;
+    for(int i  =0; i < n; i++){
         int x;
         cin>>x;
-        sum += x;
+        if(x == 0){
+            count++;
+            ans = max(ans, count);
+        }
+        else{
+            count = 0;
+        }
     }
-    if(sum % 2 == 1) cout<<"YES\n";
-    else{
-        if(n*k % 2 == 0) cout<<"YES\n";
-        else cout<<"NO\n";
-    }
+    cout<<ans<<"\n";
 }
 int main() {
     ios::sync_with_stdio(0);
@@ -37,3 +37,4 @@ int main() {
         solve();
     }
 }
+

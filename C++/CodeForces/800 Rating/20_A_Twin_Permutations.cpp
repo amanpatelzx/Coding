@@ -14,19 +14,25 @@ typedef pair<int,int> pi;
 void solve(){
     int n;
     cin>>n;
-    int k;
-    cin>>k;
-    int sum = 0;
+    vector<int> v(n);
     for(int i = 0; i < n; i++){
-        int x;
-        cin>>x;
-        sum += x;
+        cin>>v[i];
     }
-    if(sum % 2 == 1) cout<<"YES\n";
-    else{
-        if(n*k % 2 == 0) cout<<"YES\n";
-        else cout<<"NO\n";
+    vector<int> arr = v;
+    sort(v.begin(),v.end());
+    unordered_map<int,int> mp;
+    int i = 0; 
+    int j = n-1;
+    while(i <= j){
+        mp[v[i]] = v[j];
+        mp[v[j]] = v[i];
+        i++;
+        j--;
     }
+    for(int i  =0; i < n; i++){
+        cout<<mp[arr[i]]<<" ";
+    }
+    cout<<"\n";
 }
 int main() {
     ios::sync_with_stdio(0);
@@ -37,3 +43,4 @@ int main() {
         solve();
     }
 }
+

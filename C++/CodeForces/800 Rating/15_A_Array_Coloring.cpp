@@ -14,19 +14,15 @@ typedef pair<int,int> pi;
 void solve(){
     int n;
     cin>>n;
-    int k;
-    cin>>k;
-    int sum = 0;
+    int no_of_odd = 0 , no_of_even = 0;
     for(int i = 0; i < n; i++){
         int x;
         cin>>x;
-        sum += x;
+        if(x % 2 == 0) no_of_even++;
+        else no_of_odd++;
     }
-    if(sum % 2 == 1) cout<<"YES\n";
-    else{
-        if(n*k % 2 == 0) cout<<"YES\n";
-        else cout<<"NO\n";
-    }
+    if(no_of_odd % 2 == 0) cout<<"Yes\n";
+    else cout<<"No\n";
 }
 int main() {
     ios::sync_with_stdio(0);
@@ -37,3 +33,4 @@ int main() {
         solve();
     }
 }
+

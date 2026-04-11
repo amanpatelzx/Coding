@@ -9,23 +9,16 @@ typedef pair<int,int> pi;
 #define PB push_back
 #define MP make_pair
 
-#define REP(i,a,b) for (int i = a; i <= b; i++)
 
 void solve(){
-    int n;
-    cin>>n;
-    int k;
-    cin>>k;
-    int sum = 0;
-    for(int i = 0; i < n; i++){
-        int x;
-        cin>>x;
-        sum += x;
+    ll n,k;
+    cin>>n>>k;
+    if(n % 2 == 1){
+        if((n-k) % 2 != 0)cout<<"NO\n";
+        else cout<<"YES\n";
     }
-    if(sum % 2 == 1) cout<<"YES\n";
     else{
-        if(n*k % 2 == 0) cout<<"YES\n";
-        else cout<<"NO\n";
+        cout<<"YES\n";
     }
 }
 int main() {
@@ -37,3 +30,4 @@ int main() {
         solve();
     }
 }
+

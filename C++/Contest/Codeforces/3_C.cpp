@@ -11,67 +11,32 @@ typedef pair<int,int> pi;
 
 #define REP(i,a,b) for (int i = a; i <= b; i++)
 
+bool is_prime(int n){
+    if(n <= 1) return false;
+    for(int i = 2; i*i <= n; i++){
+        if(n % i == 0) return false;
+    }
+    return true;
+}
+
+void solve(){
+   int n, m , a, b;
+   cin>>n>>m>>a>>b;
+
+   if((a % n == 0 && n != 1) || (b % m == 0 && m != 1) || (n % a == 0 && a != 1) || (m % b == 0 && b != 1)) cout<<"NO\n";
+   else if((a % 2== 0 && n % 2 == 0) ||( b % 2 == 0 && m % 2 == 0)) cout<<"NO\n";
+
+   else cout<<"YES\n";
+
+   
+
+}
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
     int t;
     cin>>t;
     while(t--){
-        unordered_set<int> s;
-        vector<vector<int>> arr;
-        int n;
-        cin>>n;
-        while(n--){
-            int x;
-            cin>>x;
-            vector<int>v(x);
-            for(int i  =0; i <x; i++){
-                cin>>v[i];
-            }
-            vector<int>temp;
-            unordered_set<int> s1;
-            for(int i = x-1; i>=0; i--){
-                if(!s1.count(v[i])){
-                    temp.push_back(v[i]);
-                    s1.insert(v[i]);
-                }
-            }
-            arr.push_back(temp);
-        }
-        sort(arr.begin(), arr.end());
-        priority_queue<pi, vector<pi>, greater<pi>> pq;
-        pq.push({arr[0][0] , 0});
-        for(int i =1; i< arr.size(); i++){
-            if(pq.top().first < arr[i][0]){
-                pq.push({arr[i][0], i});
-            }
-        }
-        vector<bool> check(arr.size(), false);
-        for(int i = 0; i < arr.size(); i++){
-            if(arr[i][0] == pq.top().first) pq.pop();
-            if(check[i]) continue;
-            for(int j = 0; j < arr[i].size(); j++){
-                if(arr[i][j] > pq.top().first){
-                    int idx = pq.top().second;
-                    pq.pop();
-                    check[idx] = true;
-                    for(int k = 0; k < idx; k++){
-                        if(!s.count(arr[i][j])){
-                            cout<<arr[i][j]<<" ";
-                            s.insert(arr[i][j]);
-                        }
-                    }
-                }
-                else {
-                    if(!s.count(arr[i][j])){
-                        cout<<arr[i][j]<<" ";
-                        s.insert(arr[i][j]);
-                    }
-                }
-            }
-        }
-        cout<<"\n";
+        solve();
     }
-
 }

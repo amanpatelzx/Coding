@@ -14,18 +14,24 @@ typedef pair<int,int> pi;
 void solve(){
     int n;
     cin>>n;
-    int k;
-    cin>>k;
-    int sum = 0;
+    // vector<int> v(n);
+    bool mark = false;
+    int prev = 0;
+    int mini = INT_MAX;
     for(int i = 0; i < n; i++){
         int x;
         cin>>x;
-        sum += x;
+        if(x < prev) mark = true;
+        if(i >= 1){
+            mini = min(mini , x-prev);
+        }
+        prev = x;
     }
-    if(sum % 2 == 1) cout<<"YES\n";
+    if(mark) cout<<0<<"\n";
     else{
-        if(n*k % 2 == 0) cout<<"YES\n";
-        else cout<<"NO\n";
+        int a = 0, m = mini;
+        int count = mini/2+1;
+        cout<<count<<"\n";
     }
 }
 int main() {
@@ -37,3 +43,4 @@ int main() {
         solve();
     }
 }
+
