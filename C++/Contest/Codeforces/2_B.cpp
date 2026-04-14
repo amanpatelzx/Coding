@@ -18,73 +18,22 @@ bool is_prime(int n){
     return true;
 }
 void solve(){
-    int n , k;
-    cin>>n>>k;
+    int n,m;
+    cin>>n>>m;
     vector<int> v(n);
-    for(int i = 0; i < n; i++){
-        cin>>v[i];
+    for(int i = 0; i  < n; i++) cin>>v[i];
+
+    int l = 1;
+    int maxi = 0;
+    for(int i = 1; i < n; i++){
+        if(v[i] == v[i-1]){
+            l++;
+            maxi = max(maxi , l);
+        }
+        else l = 1;
     }
-    int idx;
-    cin>>idx;
-    idx--;
-    int result = 0;
-    int ans1 = 0;
-    for(int i = 0; i <= idx; i++){
-        if(v[idx] == 0){
-            if(i == 0 && v[i] == 0){
-                while(v[i] == 0){
-                    i++;
-                    if(i > idx) break;
-                }
-            }
-            if(i > idx) break;
-            if(v[i] != v[i-1]){
-                ans1++;
-            }
-        }
-        else{
-            if(i == 0 && v[i] == 1){
-                while(v[i] == 1){
-                    if(i > idx) break;
-                    i++;
-                }
-            }
-            if(i > idx) break;
-            if(v[i] != v[i-1]){
-                ans1++;
-            }
-        }
-    }
-    int ans2 = 0;
-    for(int i = n-1; i >= idx; i--){
-        if(v[idx] == 0){
-            if(i == n-1 && v[i] == 0){
-                while(v[i] == 0){
-                    if(i < idx) break;
-                    i--;
-                }
-            }
-            if(i < idx) break;
-            if(v[i] != v[i+1]){
-                ans2++;
-            }
-        }
-        else{
-            if(i == n-1 && v[i] == 1){
-                while(v[i] == 1){
-                    if(i < idx) break;
-                    i--;
-                }
-            }
-            if(i < idx) break;
-            if(v[i] != v[i+1]){
-                ans2++;
-            }
-        }
-        
-    }
-    result = max(ans1, ans2);
-    cout<<result<<"\n";
+    if(maxi >= m) cout<<"No\n";
+    else cout<<"Yes\n";
 }
 int main() {
     ios::sync_with_stdio(0);

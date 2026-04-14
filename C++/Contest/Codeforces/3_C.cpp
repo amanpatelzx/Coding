@@ -11,24 +11,28 @@ typedef pair<int,int> pi;
 
 #define REP(i,a,b) for (int i = a; i <= b; i++)
 
-bool is_prime(int n){
-    if(n <= 1) return false;
-    for(int i = 2; i*i <= n; i++){
-        if(n % i == 0) return false;
-    }
-    return true;
-}
-
 void solve(){
-   int n, m , a, b;
-   cin>>n>>m>>a>>b;
+    ll p,q;
+    cin>>p>>q;
 
-   if((a % n == 0 && n != 1) || (b % m == 0 && m != 1) || (n % a == 0 && a != 1) || (m % b == 0 && b != 1)) cout<<"NO\n";
-   else if((a % 2== 0 && n % 2 == 0) ||( b % 2 == 0 && m % 2 == 0)) cout<<"NO\n";
+    ll t = p + 2*q;
 
-   else cout<<"YES\n";
+    if((t-1) % 3 == 0){
+        ll n = (t-1)/3;
+        cout<<1<<" "<<n<<"\n";
+        return;
+    }
+    if((t+2) % 7 == 0){
+        ll n = (t+2)/7;
+        if(n <=1){
+            cout<<-1<<"\n";
+            return;
+        }
+        cout<<2<<" "<<n<<"\n";
+        return;
+    }
+    cout<<-1<<"\n";
 
-   
 
 }
 int main() {

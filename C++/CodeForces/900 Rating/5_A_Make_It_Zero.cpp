@@ -3,34 +3,33 @@ using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
-
+ 
 #define F first
 #define S second
 #define PB push_back
 #define MP make_pair
-
-#define REP(i,a,b) for (int i = a; i <= b; i++)
-
+ 
+ 
 void solve(){
     int n;
     cin>>n;
     vector<int> v(n);
-    for(int i  = 0; i < n; i++) cin>>v[i];
-    sort(v.rbegin(),v.rend());
-
-    for(int i = 1; i < n; i++){
-        if(v[i] == v[i-1]){
-            cout<<-1<<"\n";
-            return;
-        }
+    for(int i =0; i< n; i++){
+        cin>>v[i];
     }
-
-    for(int i = 0; i < n; i++){
-        cout<<v[i]<<" ";
+    if(n % 2 == 0 ){
+        cout<<2<<"\n";
+        cout<<1<<" "<<n<<"\n";
+        cout<<1<<" "<<n<<"\n";
     }
-    cout<<"\n";
-    
-}
+    else {
+        cout<<4<<"\n";
+        cout<<1<<" "<<n-1<<"\n";
+        cout<<1<<" "<<n-1<<"\n";
+        cout<<n-1<<" "<<n<<"\n";
+        cout<<n-1<<" "<<n<<"\n";
+    }   
+}   
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
