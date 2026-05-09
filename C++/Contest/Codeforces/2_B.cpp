@@ -9,31 +9,37 @@ typedef pair<int,int> pi;
 #define PB push_back
 #define MP make_pair
 
-#define REP(i,a,b) for (int i = a; i <= b; i++)
-bool is_prime(int n){
-    if(n <= 1) return false;
-    for(int i = 2; i*i <= n; i++){
-        if(n % i == 0) return false;
-    }
-    return true;
-}
-void solve(){
-    int n,m;
-    cin>>n>>m;
-    vector<int> v(n);
-    for(int i = 0; i  < n; i++) cin>>v[i];
 
-    int l = 1;
-    int maxi = 0;
-    for(int i = 1; i < n; i++){
-        if(v[i] == v[i-1]){
-            l++;
-            maxi = max(maxi , l);
-        }
-        else l = 1;
+void solve(){
+    ll n;
+    cin>>n;
+    vector<ll> v(n);
+
+    for(int i= 0; i < n; i++) cin>>v[i];
+
+    sort(v.begin(), v.end());
+
+    ll mex = 1;
+    ll maxi = 0;
+    for(int i = 0; i < n; i++){
+        if(v[i] == mex) mex++; 
+        maxi = max(maxi , v[i]);
     }
-    if(maxi >= m) cout<<"No\n";
-    else cout<<"Yes\n";
+    if(mex < maxi){
+        cout<<n*maxi<<"\n";
+    }
+    else{
+        maxi = 0;
+        mex = 1;
+        ll res = 0;
+        for(int i = 0; i < n ; i++){
+            if(v[i] == mex) mex++;
+            maxi = max(maxi ,v[i]);
+            res += maxi + mex;
+
+        }
+        cout<<res<<"\n";
+    }
 }
 int main() {
     ios::sync_with_stdio(0);

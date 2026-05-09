@@ -9,25 +9,25 @@ typedef pair<int,int> pi;
 #define PB push_back
 #define MP make_pair
 
-
 void solve(){
-    ll n;
-    cin>>n; 
-    vector<ll> v(n);
-    for(int i=  0; i < n; i++) cin>>v[i];
+    string s;
+    cin>>s;
 
-    for(int i = n-2; i>= 0; i--){
-        if(v[i] + v[i+1] > v[i]){
-            v[i] = v[i]+v[i+1];
-        }
-    }
-    ll cnt = 0;
+    int count  = 0;
+
+    int n = s.size();
+    int one = 0;
+    int zero = 0;
     for(int i = 0; i < n; i++){
-        if(v[i] > 0) cnt++;
+        if(s[i] == '1') one++;
+        else zero++;
     }
-    cout<<cnt<<'\n';
-}
-int main() {
+    int ans = min(one , zero);
+
+    if(ans % 2 == 1) cout<<"DA\n";
+    else cout<<"NET\n";
+}   
+int main(){ 
     ios::sync_with_stdio(0);
     cin.tie(0);
     int t;

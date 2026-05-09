@@ -9,30 +9,53 @@ typedef pair<int,int> pi;
 #define PB push_back
 #define MP make_pair
 
-#define REP(i,a,b) for (int i = a; i <= b; i++)
 
 void solve(){
-    ll p,q;
-    cin>>p>>q;
+    int n;
+    cin>>n;
+    string a, b;
+    cin>>a>>b;
 
-    ll t = p + 2*q;
+    int cnt = 0;
+    int A = 0, B = 0;
 
-    if((t-1) % 3 == 0){
-        ll n = (t-1)/3;
-        cout<<1<<" "<<n<<"\n";
-        return;
-    }
-    if((t+2) % 7 == 0){
-        ll n = (t+2)/7;
-        if(n <=1){
-            cout<<-1<<"\n";
+    for(int i = 0; i < n; i++){
+        if(a[i] == '(') A++;
+        else A--;
+
+        if(b[i] == '(') B++;
+        else B--;
+
+        if(A < 0){
+            if(cnt == 0){
+                cout<<"NO\n";
+                return;
+            }
+            else{
+                A += 2;
+                B -= 2;
+                cnt--;
+            }
+        }
+        if(B < 0){
+            if(cnt == 0){
+                cout<<"NO\n";
+                return;
+            }
+            else{
+                B += 2;
+                A -= 2;
+                cnt--;
+            }
+        }
+        if(A < 0 || B < 0){
+            cout<<"NO\n";
             return;
         }
-        cout<<2<<" "<<n<<"\n";
-        return;
+        if(a[i] != b[i]) cnt++;
     }
-    cout<<-1<<"\n";
-
+    if( A == 0 && B == 0) cout<<"YES\n";
+    else cout<<"NO\n";
 
 }
 int main() {
