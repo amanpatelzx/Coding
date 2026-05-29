@@ -2,61 +2,47 @@
 using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
+typedef vector<ll> vl;
 typedef pair<int,int> pi;
-
+typedef pair<ll,ll> pl;
+typedef __int128_t lll;
+#define UM unordered_map
+#define US unordered_set
 #define F first
 #define S second
 #define PB push_back
 #define MP make_pair
-
+#define For(i,a,b) for (int i = a; i <= b; i++)
 
 void solve(){
-    int n;
-    cin>>n;
-    string a, b;
-    cin>>a>>b;
-
-    int cnt = 0;
-    int A = 0, B = 0;
-
-    for(int i = 0; i < n; i++){
-        if(a[i] == '(') A++;
-        else A--;
-
-        if(b[i] == '(') B++;
-        else B--;
-
-        if(A < 0){
-            if(cnt == 0){
-                cout<<"NO\n";
-                return;
+    int n;cin>>n;
+    vi v(n);
+    For(i,0,n-1) cin>>v[i];
+    UM<int,int>mp,mp1;
+    For(i,0,n-1){
+        int a = v[i];
+        int cnt = 0;
+        while(a!=1){
+            mp1[a]++;
+            mp[a] += cnt;
+            cnt++;
+            if(a%2 != 0){
+                a++;
             }
-            else{
-                A += 2;
-                B -= 2;
-                cnt--;
-            }
+            else a /= 2;
         }
-        if(B < 0){
-            if(cnt == 0){
-                cout<<"NO\n";
-                return;
-            }
-            else{
-                B += 2;
-                A -= 2;
-                cnt--;
-            }
+        mp[1] += cnt;
+        mp1[1]++;
+        if(v[i] == 1){
+            mp[2] += 1;
+            mp1[2]++;
         }
-        if(A < 0 || B < 0){
-            cout<<"NO\n";
-            return;
-        }
-        if(a[i] != b[i]) cnt++;
     }
-    if( A == 0 && B == 0) cout<<"YES\n";
-    else cout<<"NO\n";
-
+    int res = INT_MAX;
+    for(auto &ele : mp1){
+        if(ele.S == n) res = min(res, mp[ele.F]);
+    }
+    cout<<res<<"\n";
 }
 int main() {
     ios::sync_with_stdio(0);

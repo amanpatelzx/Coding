@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Chess Game</h1>
+        <div class="game-mode">
+            <label>
+                <input type="radio" name="mode" value="human" checked> Play vs Human
+            </label>
+            <label>
+                <input type="radio" name="mode" value="computer"> Play vs Computer
+            </label>
+        </div>
+        <div class="game-info">
+            <div class="timer">
+                <div id="white-timer">White: 10:00</div>
+                <div id="black-timer">Black: 10:00</div>
+            </div>
+            <div id="status">White's turn</div>
+            <button id="reset-btn">Reset Game</button>
+        </div>
+        <div id="board"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stockfish.js/10.0.2/stockfish.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

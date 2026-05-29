@@ -19,7 +19,7 @@ class Main{
             System.out.println(char(i));
         }
         fw.write("Hello Aman");
-        fw.close;
+        fw.close();
         fr.close();
     }
 }

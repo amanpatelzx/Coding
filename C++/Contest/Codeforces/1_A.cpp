@@ -2,30 +2,24 @@
 using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
+typedef vector<ll> vl;
 typedef pair<int,int> pi;
-
+typedef pair<ll,ll> pl;
+typedef __int128_t lll;
+#define UM unordered_map
+#define US unordered_set
 #define F first
 #define S second
 #define PB push_back
 #define MP make_pair
-
-
+#define For(i,a,b) for (int i = a; i <= b; i++)
+ 
 void solve(){
-    ll n;
-    cin>>n; 
-    vector<ll> v(n);
-    for(int i=  0; i < n; i++) cin>>v[i];
-
-    for(int i = n-2; i>= 0; i--){
-        if(v[i] + v[i+1] > v[i]){
-            v[i] = v[i]+v[i+1];
-        }
-    }
-    ll cnt = 0;
-    for(int i = 0; i < n; i++){
-        if(v[i] > 0) cnt++;
-    }
-    cout<<cnt<<'\n';
+    ll n; cin>>n;
+    UM<int,string> ;
+    mp[5] =  "Hello";
+    cout<<mp[5];
+    US<ll> us;
 }
 int main() {
     ios::sync_with_stdio(0);

@@ -1,5 +1,3 @@
-a = 10
-if a % 2 == 0 :
-    print("Hello Pratham")
-else :
-    print("Koi bat nahi pratham")
+import math as mt
+print(mt.sqrt(9))
+print(mt.factorial(5))
