@@ -15,7 +15,22 @@ typedef __int128_t lll;
 #define For(i,a,b) for (int i = a; i <= b; i++)
  
 void solve(){
-    
+    ll n; cin>>n;
+    vl v(n);
+    For(i,0,n-1) cin>>v[i];
+    sort(v.begin(),v.end());
+
+    ll res = 0;
+    int i = 0; 
+    ll cnt = 0;
+    while(i < n){  
+        if(v[i] >= cnt+1) {
+            res += v[i]-cnt-1;
+            cnt++;
+        }
+        i++;
+    }
+    cout<<res<<'\n';
 }
 int main() {
     ios::sync_with_stdio(0);

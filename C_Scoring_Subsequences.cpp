@@ -12,10 +12,23 @@ typedef __int128_t lll;
 #define S second
 #define PB push_back
 #define MP make_pair
-#define For(i,a,b) for (int i = a; i <= b; i++)
- 
-void solve(){
-    
+#define For(i,a,b) for (int i = a; i <= b; i++)z        
+
+void solve() {
+    ll n; cin>>n;
+    vl v(n);
+    For(i,0,n-1) cin>>v[i];
+
+    int d = 1;
+    cout<<1<<" ";
+
+    For(i,1,n-1){
+        if(v[i-d] >= d+1){
+            d++;
+        }
+        cout<<d<<" ";
+    }
+    cout<<"\n";
 }
 int main() {
     ios::sync_with_stdio(0);
