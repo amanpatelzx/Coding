@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pi;
+typedef pair<ll,ll> pl;
+typedef __int128_t lll;
+#define UM unordered_map
+#define US unordered_set
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define For(i,a,b) for (int i = a; i <= b; i++)
+int freq[1000100];//here it get clear  automatically as bellow code work, 
+void solve(){//do  not need to be resize every time
+    ll n,k; cin>>n>>k;
+    vl v(n);
+    For(i,0,n-1) cin>>v[i];
+
+    int tail = 0, head = -1;
+    int distinctCnt = 0;
+    ll res = 0;
+
+    while(tail < n){
+        while(head+1 < n && (distinctCnt < k || freq[v[head+1]] >= 1)){
+            head++;
+            if(freq[v[head]] == 0){
+                distinctCnt++;
+            }
+            freq[v[head]]++;
+        }
+        res += head-tail+1;
+        if(tail > head){
+            tail++;
+            head = tail-1;
+        }
+        else{
+            freq[v[tail]]--;
+            if(freq[v[tail]] == 0) distinctCnt--;
+            tail++;
+        }
+    }
+    cout<<res<<'\n';
+}
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+}

@@ -15,12 +15,20 @@ typedef __int128_t lll;
 #define For(i,a,b) for (int i = a; i <= b; i++)
  
 void solve(){
-        
+    ll n, x, y , z; cin>>n>>x>>y>>z;
+
+    ll time = (n + (x+y) -1)/(x+y);
+
+    // ll tt = n - (n+z*x-1)/(z*x);
+    time = min(time , z + (n-x*z + (x+10*y)-1)/(x+10*y));
+    cout<<time<<"\n";
 }
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int _;
-    cin>>_; while(_--)
-    solve();
+    int t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
 }

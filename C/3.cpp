@@ -1,26 +1,27 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef pair<int,int> pi;
-
-#define F first
-#define S second
-#define PB push_back
-#define MP make_pair
-
-#define REP(i,a,b) for (int i = a; i <= b; i++)
-
-void solve(){
-    cout<<floor(9.3);
-}
-int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
+int main(){
     int t;
     cin>>t;
     while(t--){
-        solve();
-    }
-}
+        int n;
+        cin>>n;
+       int r=n%12;
+       long long a=0;
+       if(r==10){
+        a=22;
+       }else if(r==11){
+        a=11;
+        }else{
+            a=r;
+        }
 
+        if(n<a){
+            cout<<-1<<endl;
+        }else{
+            cout<<a<<" "<<n-a<<endl;
+        }
+
+    }
+    return 0;
+}
