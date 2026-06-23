@@ -15,7 +15,16 @@ typedef __int128_t lll;
 #define For(i,a,b) for (int i = a; i < b; i++)
  
 void solve(){
-
+    int n; cin >> n;
+    int odd = 0, even = 0;
+    for(int i = 0; i < 2*n; i++){
+        int x; cin >> x;
+        if(x & 1) odd++;
+        else even++;
+    }
+    if(odd == even) cout<<"Yes\n";
+    else cout<<"No\n";
+    
 }
 int main() {
     ios::sync_with_stdio(0);

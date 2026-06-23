@@ -15,7 +15,13 @@ typedef __int128_t lll;
 #define For(i,a,b) for (int i = a; i < b; i++)
  
 void solve(){
-
+    int n; cin >> n;
+    int OR = 0;
+    while(n--){
+        int x; cin >> x;
+        OR |= x;
+    }
+    cout<<OR<<"\n";
 }
 int main() {
     ios::sync_with_stdio(0);

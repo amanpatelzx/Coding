@@ -15,7 +15,7 @@ typedef __int128_t lll;
 #define For(i,a,b) for (int i = a; i < b; i++)
  
 void solve(){
-
+    
 }
 int main() {
     ios::sync_with_stdio(0);

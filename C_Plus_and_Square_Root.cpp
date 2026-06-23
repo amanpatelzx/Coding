@@ -13,9 +13,19 @@ typedef __int128_t lll;
 #define PB push_back
 #define MP make_pair
 #define For(i,a,b) for (int i = a; i < b; i++)
- 
-void solve(){
+/*
+Observation -> 
+    array of 1 , 4 ,9 , 16 , 36
+    10^5 * 10^5 = 10 ^ 10;
+    2 + 2*1 = 4 -> m = 2; level = 2;
+    2 + 2*7 = 4 -> m = 4; level = 3;
+    4 + 3*11 = 4 -> m = 4; level = 3;
 
+    think in diffrent way -:
+    arr
+*/
+void solve(){
+    
 }
 int main() {
     ios::sync_with_stdio(0);
