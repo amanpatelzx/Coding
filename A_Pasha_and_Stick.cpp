@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef pair<int,int> pi;
+typedef pair<ll,ll> pl;
+typedef __int128_t lll;
+#define UM unordered_map
+#define US unordered_set
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define For(i,a,b) for (int i = a; i < b; i++)
+ 
+void solve(){
+    ll n; cin>>n;
+    if(n & 1 || n < 5){
+        cout<<0<<'\n';
+        return;
+    }
+    n = n/2;
+    if(n & 1){
+        cout<<n/2<<'\n';
+        return;
+    }
+    else{
+        n--;
+        cout<<n/2<<"\n";
+        return;
+    }
+}
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int _;
+    //cin>>_; while(_--)
+    solve();
+}
