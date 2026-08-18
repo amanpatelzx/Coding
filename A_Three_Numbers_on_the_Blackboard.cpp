@@ -13,9 +13,18 @@ typedef __int128_t lll;
 #define PB push_back
 #define MP make_pair
 #define For(i,a,b) for (int i = a; i < b; i++)
- 
+
 void solve(){
-    
+    vl v(3);
+    for(int i = 0; i < 3; i++) cin>>v[i];
+    sort(v.begin(), v.end());
+    if(v.back() > v[0] + v[1]){
+        cout<<v[1]<<"\n";
+        return;
+    }
+    else{
+        cout<<v[2] - v[0]<<"\n";
+    }
 }
 int main() {
     ios::sync_with_stdio(0);

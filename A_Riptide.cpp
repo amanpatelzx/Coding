@@ -15,6 +15,20 @@ typedef __int128_t lll;
 #define For(i,a,b) for (int i = a; i < b; i++)
  
 void solve(){
+    vector<int> v(3);
+    for(int i = 0; i < 3; i++) cin>>v[i];
+    sort(v.rbegin(), v.rend());
+    int res = 0;
+    while(1){
+        int a = v[0], b = v[1], c = v[2];
+        if(a == b || a == c || b == c){
+            break;
+        }
+        v[0]--;
+        v[2]++;
+        res++;
+    }
+    cout<<res<<"\n";
     
 }
 int main() {
