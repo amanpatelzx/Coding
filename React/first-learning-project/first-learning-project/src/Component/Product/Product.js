@@ -6,7 +6,7 @@ function Product({id , name , image}){
     const {handleAddToCart} = useContext(AppContext);
     return (
         <div key={id} className="product">
-            <img src={require(`../../Asset/${image}`)} alt="product.name"/>
+            <img src={require(`../../Asset/${image || "default_product.png"}`)} alt={name}/>
             <div className="product-name"> {name}</div>
             <button className="yellow-button" onClick={() => handleAddToCart(id,name, image)}>Add to Cart</button>
         </div>
