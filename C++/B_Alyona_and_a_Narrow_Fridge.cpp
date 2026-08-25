@@ -15,29 +15,19 @@ typedef __int128_t lll;
 #define For(i,a,b) for (int i = a; i < b; i++)
  
 void solve(){
-    ll n, h; cin>>n>>h;
-    vl v(n); for(int i = 0; i < n; i++) cin>>v[i];
-    ll res = 1;
-    ll low = 1,  high = n;
-    auto check = [&](ll mid){
-        vl tmp;
-        for(int i = 0; i < mid; i++) tmp.PB(v[i]);
-        sort(tmp.rbegin(), tmp.rend());
-        ll sum = 0;
-        for(int i = 0; i < mid; i += 2){
-            sum += tmp[i];
-        }
-        return sum <= h;
-    };
-    while(low <= high){
-        ll mid = low + (high - low ) / 2;
-        if(check(mid)){
-            res = mid;
-            low = mid+1;
-        }
-        else high = mid - 1;
+    int n, m, k; cin>>n>>m>>k;
+    vi v(n); for(int i = 0 ; i < n; i++) cin>>v[i];
+    sort(v.begin(), v.end());
+    vi diff(n-1);
+    for(int i = 0; i < n-1; i++){
+        diff[i] = v[i+1]-v[i]-1;
     }
-    cout<<res<<"\n";
+    sort(diff.begin(), diff.end());
+    int ans = n;
+    for(int i = 0; i < n-k; i++){
+        ans += diff[i];
+    }
+    cout<<ans<<'\n';
 }
 int main() {
     ios::sync_with_stdio(0);
